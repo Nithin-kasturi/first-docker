@@ -15,6 +15,7 @@ pipeline {
             steps {
                 echo "Building the app"
                 script {
+                    gv=load "script.groovy"
                     gv.buildApp() // Assuming `gv.buildApp` is a valid function in the `gv` object.
                 }
             }
