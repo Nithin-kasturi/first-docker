@@ -46,7 +46,7 @@ pipeline{
 
             // Log deployment details and call deploy function
             echo "Deploying the app version ${params.VERSION} to environment: ${userInput}"
-            gv.deployApp(userInput)
+            gv.deployApp()
         }
     }
 }
