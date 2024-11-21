@@ -32,21 +32,24 @@ pipeline{
           }
         }
       }
-      stage("deploy"){
-        input{
-              message:"Enter the deploymnet stage"
-              ok "Done"
-              parameters{
-              choice(name:"ENV",choices:['prd','dev'],description:'')
-              }
-              
-            }
-        steps{
-          script{
-          echo "Deploying the app ${params.VERSION}"
-          gv.deployApp()
-          }
+      stage("deploy") {
+    steps {
+        script {
+            // Capture user input for deployment stage
+            def userInput = input(
+                message: "Enter the deployment stage",
+                ok: "Done",
+                parameters: [
+                    choice(name: "ENV", choices: ['prd', 'dev'], description: "Select the environment")
+                ]
+            )
+
+            // Log deployment details and call deploy function
+            echo "Deploying the app version ${params.VERSION} to environment: ${userInput}"
+            gv.deployApp(userInput)
         }
-      }
+    }
+}
+
     }
 }
