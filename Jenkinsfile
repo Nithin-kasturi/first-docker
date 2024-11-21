@@ -43,7 +43,7 @@ pipeline {
                     )
 
                     echo "Deploying the app version ${VERSION} to environment: ${environment}"
-                    gv.deployApp(environment)
+                    gv.deployApp()
                 }
             }
         }
