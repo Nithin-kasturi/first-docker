@@ -33,8 +33,7 @@ pipeline{
         }
       }
       stage("deploy"){
-        steps{
-          input{
+        input{
               message:"Enter the deploymnet stage"
               ok "Done"
               parameters{
@@ -42,6 +41,7 @@ pipeline{
               }
               
             }
+        steps{
           script{
           echo "Deploying the app ${params.VERSION}"
           gv.deployApp()
