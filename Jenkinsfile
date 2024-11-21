@@ -34,19 +34,20 @@ pipeline{
       stage("deploy"){
         steps{
           script{
+
             input{
-              message "Select the deployment env"
+              message:"Enter the deploymnet stage"
               ok "Done"
               parameters{
-                choice(name:"ENV",choices;['dev','prod'],description:'Select')
+              choice(name:"ENV",choices:['prd','dev'],description:'')
+
               }
+              
             }
-            echo "Deploying the app ${VERSION}"
-            echo "Deploying the app ${ENV}"
-            
-            gv.deployApp()
+          echo "Deploying the app ${VERSION}"
+          gv.deployApp()
           }
         }
       }
     }
-  }
+}
