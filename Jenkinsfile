@@ -27,7 +27,7 @@ pipeline{
             }
           }
           script{
-          echo "Testing the app ${VERSION}"
+          echo "Testing the app ${params.VERSION}"
           gv.testApp()
           }
         }
@@ -44,7 +44,7 @@ pipeline{
               }
               
             }
-          echo "Deploying the app ${VERSION}"
+          echo "Deploying the app ${params.VERSION}"
           gv.deployApp()
           }
         }
